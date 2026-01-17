@@ -37,8 +37,8 @@ _msg
             .text   "rename <old> <new>  Rename <old> to <new>.", $0a
             .text   "cp     <old> <new>  Copy <old> to <new>.", $0a
             .text   "mkfs   <label>      Creates a new filesystem on the device.", $0a
-            .text   "iecstat             Reads the IEC error channel.", $0a
-            .text   "ieccmd <cmd>        Sends a command to the IEC device.", $0a
+            .text   "@                   Reads the IEC error channel.", $0a
+            .text   "@<cmd>              Sends a command to the IEC device.", $0a
             .text   "keys                Demonstrates key status tracking.", $0a
             .text   "help                Prints this text.", $0a
             .text   "about               Information about the software and hardware.", $0a
