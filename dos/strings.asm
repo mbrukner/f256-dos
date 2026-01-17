@@ -19,7 +19,7 @@ puts_hdr    jmp     strings.puts_headline
 strings     .namespace
 
             .section    dp
-str         .word       ?
+str_ptr     .word       ?
             .send            
 
             .section    code
@@ -50,17 +50,17 @@ puts_zero
             phx
             phy
 
-            stx     strings.str+0
-            sta     strings.str+1
+            stx     strings.str_ptr+0
+            sta     strings.str_ptr+1
 
             ldy     #0
 _loop
-            lda     (strings.str)
+            lda     (strings.str_ptr)
             beq     _done
             jsr     putc
-            inc     strings.str
+            inc     strings.str_ptr
             bne     _loop
-            inc     strings.str+1
+            inc     strings.str_ptr+1
             bra     _loop
 _done
             ply

@@ -95,6 +95,28 @@ _digit
 _digits                             
             .text   "0123456789abcdef"
 
+        ; update char under cursor, no cursor movement
+putinplace
+        pha
+        phy
+        jsr     cursor_off
+        jsr     _put
+        jsr     cursor_on
+        ply
+        pla
+        rts
+
+_put
+        ldy     #2
+        sty     io_ctrl
+        ldy     cursor
+        sta     (screen),y
+        lda     color
+        ldy     #3
+        sty     io_ctrl
+        ldy     cursor
+        sta     (screen),y
+        rts
 
 putchar
         pha
