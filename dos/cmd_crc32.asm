@@ -37,32 +37,33 @@ cmd
             lda     #>print
             sta     print_fn+1
 
+            lda     #' '
+            jsr     display.putinplace
+
             lda     #WIDTH
             ldx     #print_fn
             jsr     reader.read_file
+
             ldx     #3
 _print_crc  lda     crc,x
             eor     #$ff
             jsr     display.print_hex
             dex
             bpl     _print_crc
+            jsr     put_cr
             rts
 
-spinner
-            .byte   188, 189, 190, 191
+spinner     .byte   224,225
             
 print
             jsr     update_crc
-            ;jsr     display.print_hex
-            ;jsr     print_space
             dec     count
             bne     _done
-            ;jsr     put_cr
             lda     #WIDTH
             sta     count
             inc     total
             lda     total
-            and     #$3
+            and     #$01
             tax
             lda     spinner,x
             jsr     display.putinplace

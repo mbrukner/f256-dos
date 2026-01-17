@@ -74,7 +74,6 @@ _error
             sec
             rts
 _done
-            jsr     put_cr
             clc
             rts
 

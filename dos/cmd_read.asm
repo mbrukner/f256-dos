@@ -16,7 +16,9 @@ cmd
 
             lda     #16 ; Max read size
             ldx     #print_fn
-            jmp     reader.read_file
+            jsr     reader.read_file
+            jsr     put_cr
+            rts
             
 print
             jmp     putc

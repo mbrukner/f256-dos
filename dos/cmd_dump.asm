@@ -22,7 +22,9 @@ cmd
 
             lda     #WIDTH
             ldx     #print_fn
-            jmp     reader.read_file
+            jsr     reader.read_file
+            jsr     put_cr
+            rts
             
 print
             jsr     display.print_hex
