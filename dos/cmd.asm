@@ -43,18 +43,22 @@ ls          .null   "ls"
 dir         .null   "dir"
 lsf         .null   "lsf"
 read        .null   "read"
-write       .null   "write"  
-dump        .null   "dump" 
-rename      .null   "rename"   
-cp          .null   "cp"   
-rm          .null   "rm"     
-del         .null   "del"     
-delete      .null   "delete"     
+write       .null   "write"
+dump        .null   "dump"
+crc32       .null   "crc32"
+rename      .null   "rename"
+cp          .null   "cp"
+rm          .null   "rm"
+del         .null   "del"
+delete      .null   "delete"
 mkfs        .null   "mkfs"
 keys        .null   "keys"
-mkdir       .null   "mkdir"     
-rmdir       .null   "rmdir"     
+mkdir       .null   "mkdir"
+rmdir       .null   "rmdir"
 wifi        .null   "wifi"
+wedge       .null   233
+iecstat     .null   "iecstat"
+ieccmd      .null   "ieccmd"
             .endn
 
 commands
@@ -66,6 +70,7 @@ commands
             .word   words.read,     read.cmd
             .word   words.write,    write.cmd
             .word   words.dump,     dump.cmd
+            .word   words.crc32,    crc32.cmd
             .word   words.rename,   rename.cmd
             .word   words.cp,       copy.cmd
             .word   words.rm,       delete.cmd
@@ -76,6 +81,9 @@ commands
             .word   words.mkdir,    mkdir.cmd
             .word   words.rmdir,    rmdir.cmd
             .word   words.wifi,     wifi.cmd
+            .word   words.wedge,    wedge.cmd
+            .word   words.iecstat,  iec.stat_cmd
+            .word   words.ieccmd,   iec.send_cmd
             .word   0
 
 about
@@ -289,7 +297,7 @@ _cmd
             lda     commands,x
             beq     _check_user_program
             inx
-            inx        
+            inx
 
             ldy     readline.tokens+0   ; offset of token zero.
             jsr     _cmp
@@ -340,13 +348,20 @@ _cmp
 _loop
             lda     words.base,x
             cmp     readline.buf,y
-            bne     _nope
+            bne     _check_wedge
             ora     readline.buf,y
             clc
             beq     _out
             inx
             iny
             bra     _loop
+_check_wedge
+            cmp     #233
+            bne     _nope
+            lda     readline.buf,y
+            cmp     #'@'
+            clc
+            beq     _out
 _nope
             sec
 _out

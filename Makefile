@@ -6,16 +6,19 @@ DOS	= \
 	dos/cmd_read.asm \
 	dos/cmd_write.asm \
 	dos/cmd_dump.asm \
+	dos/cmd_crc32.asm \
 	dos/cmd_rename.asm \
 	dos/cmd_delete.asm \
 	dos/cmd_mkfs.asm \
 	dos/cmd_mkdir.asm \
 	dos/cmd_rmdir.asm \
 	dos/cmd_keys.asm \
+	dos/cmd_wedge.asm \
 	dos/cmd_wifi.asm \
 	dos/cmd_external.asm \
 	dos/cmd_copy.asm \
 	dos/cmd_help.asm \
+	dos/cmd_iec.asm \
 	dos/strings.asm \
 	dos/display.asm \
 	dos/readline.asm \
@@ -43,4 +46,5 @@ refresh:
 	cp $(KERNEL)/hardware/keys.asm kernel
 	cp $(KERNEL)/docs/README.md kernel
 	
-
+run: dos_jr.bin
+	foenixmgr binary dos_jr.bin --address 0x4000
