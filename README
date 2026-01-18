@@ -1,4 +1,0 @@
-MicroKernel DOS shell
----------------------
-
-This project is a simple command line "DOS"-style shell, which can be used to perform simple maintenance tasks, and demonstrates how each of the MicroKernel calls are used. 
