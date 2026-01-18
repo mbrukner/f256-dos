@@ -1,6 +1,6 @@
 # MicroKernel DOS Shell
 
-A simple command line "DOS"-style shell for the Foenix F256, which can be used to perform simple maintenance tasks. It also demonstrates how each of the MicroKernel calls are used.
+A simple command line "DOS"-style shell for the Foenix F256 and Wildbits computers, which can be used to perform simple maintenance tasks. It also demonstrates how each of the MicroKernel calls are used.
 
 ## Drives
 

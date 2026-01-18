@@ -51,10 +51,11 @@ _print_crc  lda     crc,x
             dex
             bpl     _print_crc
             jsr     put_cr
+            clc
             rts
 
 spinner     .byte   224,225
-            
+
 print
             jsr     update_crc
             dec     count

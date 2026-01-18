@@ -16,25 +16,12 @@
             .text       0               ; arguments
             .text       "Simple commandline shell.",0 ; description
 
-hello
-            ldy     #0
-_loop
-            lda     _hello,y
-            beq     _done
-            jsr     display.putchar
-            iny
-            bra     _loop
-_done
-            clc
-            rts            
-_hello      .null   "Hello World!"
-
             .align      256     ; For the strings.
 Strings     .dsection   strings ; All string pointers in the same page.
             .dsection   code
             
 *           = $bfff
-            .byte       0       ; Fill an entire 8k block.            
+            .byte       0       ; Fill an entire 8k block.
 
 
             .virtual    $0000   ; Zero page
@@ -55,7 +42,7 @@ mmu         .fill       8
             .dsection   pages   ; Aligned segments
             .endv
 
-dos         .namespace            
+dos         .namespace
             .section    code
 
 start
@@ -84,7 +71,7 @@ welcome
             ldx     #<_msg
             jmp     strings.puts_zero
 
-_msg        .text   "Foenix F256 DOS Shell (", DATE_STR, ")", $0a, $0a, 0
+_msg        .text   "Wildbits DOS Shell (", DATE_STR, ")", $0a, $0a, 0
             
 
             .send
