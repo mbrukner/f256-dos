@@ -59,6 +59,7 @@ wifi        .null   "wifi"
 wedge       .null   233
 iecstat     .null   "iecstat"
 ieccmd      .null   "ieccmd"
+nes         .null   "nes"
             .endn
 
 commands
@@ -84,6 +85,7 @@ commands
             .word   words.wedge,    wedge.cmd
             .word   words.iecstat,  iec.stat_cmd
             .word   words.ieccmd,   iec.send_cmd
+            .word   words.nes,      nes.cmd
             .word   0
 
 about
@@ -114,6 +116,9 @@ start
             sta     kernel.args.events+0
             lda     #>event
             sta     kernel.args.events+1
+
+          ; Initialize readline history
+            jsr     readline.init
 
           ; Get the list of drives
             jsr     kernel.FileSystem.List
