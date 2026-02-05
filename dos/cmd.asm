@@ -59,7 +59,7 @@ wifi        .null   "wifi"
 wedge       .null   233
 iecstat     .null   "iecstat"
 ieccmd      .null   "ieccmd"
-nes         .null   "nes"
+fnx4n4s     .null   "4n4s"
             .endn
 
 commands
@@ -85,7 +85,7 @@ commands
             .word   words.wedge,    wedge.cmd
             .word   words.iecstat,  iec.stat_cmd
             .word   words.ieccmd,   iec.send_cmd
-            .word   words.nes,      nes.cmd
+            .word   words.fnx4n4s,  fnx4n4s.cmd
             .word   0
 
 about

@@ -286,6 +286,10 @@ _next
         ply
         rts
 
+carriage_return
+        stz     cursor
+        rts
+
 purple
         stz     io_ctrl
         phx

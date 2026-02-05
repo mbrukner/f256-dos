@@ -19,6 +19,7 @@ DOS	= \
 	dos/cmd_copy.asm \
 	dos/cmd_help.asm \
 	dos/cmd_iec.asm \
+	dos/cmd_4n4s.asm \
 	dos/strings.asm \
 	dos/display.asm \
 	dos/readline.asm \
@@ -48,3 +49,6 @@ refresh:
 	
 run: dos_jr.bin
 	foenixmgr binary dos_jr.bin --address 0x4000
+
+flash: dos_jr.bin
+	foenixmgr flash-bulk update.csv

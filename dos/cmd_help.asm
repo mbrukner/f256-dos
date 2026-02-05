@@ -40,6 +40,7 @@ _msg
             .text   "@                   Reads the IEC error channel.", $0a
             .text   "@<cmd>              Sends a command to the IEC device.", $0a
             .text   "keys                Demonstrates key status tracking.", $0a
+            .text   "4n4s                Tests NES/SNES controllers.", $0a
             .text   "help                Prints this text.", $0a
             .text   "about               Information about the software and hardware.", $0a
             .text   "wifi <ssid> <pass>  Configures the wifi access point.", $0a
